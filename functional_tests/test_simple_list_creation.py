@@ -11,7 +11,7 @@ class NewVisitorTest(FunctionalTest):
 		self.assertIn('To-Do', header_text)
 
 		# Check adding first thing to list
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.get_item_input_box()
 		self.assertEqual(
 				inputbox.get_attribute('placeholder'),
 				'Enter a to-do item'
@@ -24,7 +24,7 @@ class NewVisitorTest(FunctionalTest):
 		self.check_for_row_in_list_table('1: Buy peacock feathers')
 
 		# Check adding second item to list
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.get_item_input_box()
 		inputbox.send_keys('Use peacock feathers to make a fly')
 		inputbox.send_keys(Keys.ENTER)
 
@@ -42,7 +42,7 @@ class NewVisitorTest(FunctionalTest):
 		self.assertNotIn('make a fly', page_text)
 
 		# Francis starts a new list
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.get_item_input_box()
 		inputbox.send_keys('Buy milk')
 		inputbox.send_keys(Keys.ENTER)
 
